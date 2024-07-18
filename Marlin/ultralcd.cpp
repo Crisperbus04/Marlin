@@ -94,7 +94,7 @@ uint8_t lcd_status_update_delay = 1, // First update one loop delayed
 
 #if ENABLED(DOGLCD)
   #include "ultralcd_impl_DOGM.h"
-  #include <U8glib.h>
+  #include <U8g2lib.h>
   bool drawing_screen, first_page; // = false
 #else
   #include "ultralcd_impl_HD44780.h"
@@ -972,13 +972,12 @@ void lcd_quick_feedback(const bool clear_buttons) {
     #if ENABLED(BLTOUCH_LCD_VOLTAGE_MENU)
       void bltouch_report() {
         SERIAL_ECHOLNPAIR("EEPROM Last BLTouch Mode - ", (int)bltouch_last_written_mode);
-        SERIAL_ECHOLNPGM("Configuration BLTouch Mode - "
+        SERIAL_ECHOPGM("Configuration BLTouch Mode - ");
           #if ENABLED(BLTOUCH_SET_5V_MODE)
-            "5V"
+            SERIAL_ECHOLNPGM("5V");
           #else
-            "OD"
+            SERIAL_ECHOLNPGM("OD");
           #endif
-        );
         char mess[21];
         strcpy_P(mess, PSTR("BLTouch Mode - "));
         strcpy_P(&mess[15], bltouch_last_written_mode ? PSTR("5V") : PSTR("OD"));

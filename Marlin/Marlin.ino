@@ -1,3 +1,7 @@
+// ultima modificacion 19/5/2024
+// se agrego bed mesh manual de 9 puntos 
+// guarda cambios 
+// pid cama y hot end 7.5v
 /*
 ================================================================================
 
